@@ -3,11 +3,10 @@
     <div class="inner">
       <div
         class="open-nav-drawer"
-        @click="onNav">
+        @click="onNav('LNB')">
       </div>
       <a
-        href="
-      /"
+        href="javascript:void(0)"
         class="logo"></a>
       <div class="search">
         <input
@@ -16,8 +15,7 @@
           @keypress.enter="search" />
         <div
           class="search__icon"
-          @click="search">
-        </div>
+          @click="search"></div>
       </div>
       <div class="ranking">
         <div
@@ -42,8 +40,8 @@
         <div
           class="open-more"
           @click="toggleRankingWrap"></div>
-        <!-- v-if="isShowRankingWrap" -->
         <div
+          v-if="isShowRankingWrap"
           class="ranking-wrap"
           @click.stop="">
           <div class="title">
@@ -143,13 +141,13 @@ export default {
     referenceDate () {
       return dayjs(this.rankings.referenceDate).format('YYYY.MM.DD HH:mm')
     },
-    // filteredRankings () {
-    //   return this.rankings.rankings.filter((rank, index) => {
-    //     const start = this.tabIndex * 10
-    //     const end = start + 9
-    //     return start <= index && index <= end
-    //   })
-    // }
+    filteredRankings () {
+      return this.rankings.rankings.filter((rank, index) => {
+        const start = this.tabIndex * 10
+        const end = start + 9
+        return start <= index && index <= end
+      })
+    }
   },
   mounted(){
     this.init()
@@ -179,10 +177,10 @@ export default {
     async search(){
          // 기본적인 유효성 검사
       if (!this.searchText.trim()) return
+
       const res = await this.$search({
         searchText: this.searchText
       })
-      // console.log('검색 결과: ', res)
       // location = res // 검색된 결과 페이지로 이동!
     },
     toggleRankingWrap (event) {
