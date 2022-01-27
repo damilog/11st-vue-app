@@ -1,0 +1,37 @@
+body {
+  color: #333;
+  line-height: 1.5; //배
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+.inner {
+  width: 1240px;
+  margin: 0 auto; //가운데 정렬
+  position: relative;
+}
+
+section {
+  .inner {
+    padding: 50px 0;
+    box-sizing: border-box;
+  }
+  h2 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+}
+.lazy-load-element {
+  opacity: 0;
+  transition: 1s;
+  transform: translateY(100px);
+}
+.lazy-loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
