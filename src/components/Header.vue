@@ -113,12 +113,14 @@
       </ul>
     </div>
   </header>
+  <!-- 여기에 메뉴 -->
 </template>
 
 <script>
 import dayjs from 'dayjs'
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
+
 
 export default {
   data(){
@@ -180,7 +182,7 @@ export default {
       const res = await this.$search({
         searchText: this.searchText
       })
-      console.log('검색 결과: ', res)
+      // console.log('검색 결과: ', res)
       // location = res // 검색된 결과 페이지로 이동!
     },
     toggleRankingWrap (event) {
